@@ -1,4 +1,4 @@
-import { reqSpuList } from "@/api/product/spu"
+import { reqSpuList,reqSpuInfo,reqTrademarkList,reqspuImageList,reqSaleAttrList} from "@/api/product/spu"
 const actions = {
   async getSpuList({ commit }, data) {
     let result = await reqSpuList(data)
