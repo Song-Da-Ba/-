@@ -20,6 +20,7 @@
                 icon="el-icon-plus"
                 size="mini"
                 title="添加sku"
+                @click="addSpu"
               ></hint-button>
               <el-tooltip content="修改spu" placement="bottom" effect="light">
               <el-button
@@ -57,7 +58,7 @@
         >
         </el-pagination>
       </div>
-      <SpuForm v-show="scene==1" @close="close"></SpuForm>
+      <SpuForm v-show="scene==1" @close="close" ref="spu"></SpuForm>
       <SkuForm v-show="scene==2"></SkuForm>
     </el-card>
   </div>
@@ -79,7 +80,7 @@ export default {
       limit: 3,
       total: 0,
       records:[],
-      scene:0 
+      scene:0 ,
     };
   },
   methods: {
@@ -112,8 +113,10 @@ export default {
     addSpu(){
       this.scene = 1
     },
+    //修改spu
     updataSpu(row){
       this.scene = 1
+      this.$refs.spu.initData(row)
     },
     close(scene){
       this.scene = scene
